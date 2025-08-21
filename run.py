@@ -18,7 +18,7 @@ class Reg(StatesGroup):
     number = State()
 
 # 1-Handler - Start komandasi
-print("Bu yangi commit uchun!")
+# print("Bu yangi commit uchun!")
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!", 
