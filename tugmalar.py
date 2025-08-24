@@ -5,25 +5,62 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeybo
 # Asosiy menyu
 menyu = InlineKeyboardMarkup(inline_keyboard=[
     [
-        InlineKeyboardButton(text='Katalog', callback_data='catalog'),
-        InlineKeyboardButton(text='Yordam', callback_data='help')
+        InlineKeyboardButton(text='Katalog', callback_data='catalog')
     ]
 ])
 
 # Katalog tugmalari
 inline_katalog = InlineKeyboardMarkup(inline_keyboard=[
     [
-        InlineKeyboardButton(text="Anor", callback_data='anor'), 
-        InlineKeyboardButton(text="Olma", callback_data='olma')
+        InlineKeyboardButton(text="Yoz fasli", callback_data='yoz')
     ],    
     [
-        InlineKeyboardButton(text="Anjir", callback_data='anjir'), 
-        InlineKeyboardButton(text="Banan", callback_data='banan'), 
-        InlineKeyboardButton(text="Uzum", callback_data='uzum')
-    ],
-    [
-        InlineKeyboardButton(text='Bosh sahifa', callback_data='bosh_sahifa')
+        InlineKeyboardButton(text="Qish fasli", callback_data='qish')
     ]
+])
+
+yoz = InlineKeyboardMarkup(inline_keyboard=[
+
+    [
+        InlineKeyboardButton(text="Antalya (Turkiya)", callback_data='antalya')
+    ],
+
+    [
+        InlineKeyboardButton(text="Bali (Indoneziya)", callback_data='bali')
+    ],
+
+    [
+        InlineKeyboardButton(text="Maldive orollari", callback_data='maldive')
+    ],
+
+    [
+        InlineKeyboardButton(text="Dubay (Birlashgan Arab Amirliklari)", callback_data='dubai')
+    ],
+
+    [
+        InlineKeyboardButton(text="Santorini (Gretsiya)", callback_data='santoroni')
+    ],
+
+    [
+        InlineKeyboardButton(text="Bangkok (Tailand)", callback_data='bangkok')
+    ],
+
+    [
+        InlineKeyboardButton(text="Barselona (Ispaniya)", callback_data='barselona')
+    ],
+
+    [
+        InlineKeyboardButton(text="Dubrovnik (Xorvatiya)", callback_data='dubrovnik')
+    ],
+
+    [
+        InlineKeyboardButton(text="Kuba (Gavana)", callback_data='kuba')
+    ],
+
+    [
+        InlineKeyboardButton(text="Jeju oroli (Janubiy Koreya)", callback_data='jeju')
+    ]
+
 ])
 
 # Orqaga qaytish tugmasi (faqat katalogga)
@@ -49,12 +86,12 @@ bosh_sahifa = InlineKeyboardMarkup(inline_keyboard=[
 ])
 
 
-phone_button = ReplyKeyboardMarkup(
-    keyboard=[
-        [
-            KeyboardButton(text='Telefon raqamni yuborish', request_contact=True)
-        ]
-    ],
-    resize_keyboard=True,
-    one_time_keyboard=True
-)
+# phone_button = ReplyKeyboardMarkup(
+#     keyboard=[
+#         [
+#             KeyboardButton(text='Telefon raqamni yuborish', request_contact=True)
+#         ]
+#     ],
+#     resize_keyboard=True,
+#     one_time_keyboard=True
+# )

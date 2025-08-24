@@ -12,16 +12,11 @@ from config import TOKEN
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-
-class Reg(StatesGroup):
-    name = State()
-    number = State()
-
 # 1-Handler - Start komandasi
 # print("Bu yangi commit uchun!")
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!", 
+    await message.answer(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!\nSiz bu yerdan toz faslida va qish faslida qayerga sayohat qilishni tanlashingiz mumkin!", 
                         reply_markup=menyu)
                         
 
@@ -29,55 +24,15 @@ async def cmd_start(message: Message):
 @dp.callback_query(F.data == 'catalog')
 async def catalog(callback: CallbackQuery):
     await callback.answer("Siz Katalog tugmasini bosdingiz!")
-    await callback.message.edit_text('Bitta meva tanlang:', reply_markup=inline_katalog)
+    await callback.message.edit_text('Siz qaysi faslda sayohay qilmoqchisiz?:', reply_markup=inline_katalog)
 
-# 3-Handler - Yordam tugmasi
-@dp.callback_query(F.data == 'help')
-async def help_handler(callback: CallbackQuery):
-    await callback.answer("Yordam bo'limi!")
-    help_text = """
-Bot haqida:
-
-Bu bot mevalar katalogi haqida ma'lumot beradi.
-
-Buyruqlar:
-/start - Botni ishga tushirish
-Katalog - Mevalar ro'yxatini ko'rish
-Yordam - Bu xabarni ko'rish
-
-Mavjud mevalar:
-Anor, Olma, Anjir, Banan, Uzum
-
-Savollar bo'lsa, Adminga murojaat qiling.
-    """
-    await callback.message.edit_text(help_text, reply_markup=bosh_sahifa)
 
 # 4-Handler - Anor haqida
-@dp.callback_query(F.data == 'anor')
-async def anor_info(callback: CallbackQuery):
-    await callback.answer("Anor haqida ma'lumot!")
-    anor_text = """
-ANOR HAQIDA MA'LUMOT
-
-Oddiy anor (lotincha: Púnica granátum) — derbenlar oilasiga (Lythraceae) turkumiga mansub o'simlik turi, mevasi iste'molga yaroqli.
-
-Foydali xususiyatlari:
-• Vitaminlar (C, K, folat) bilan boy
-• Antioksidantlar miqdori yuqori
-• Yurак-qon tomir tizimi uchun foydali
-• Immunitetni mustahkamlaydi
-
-Iste'mol qilish usullari:
-• Xom holda iste'mol qilish
-• Tayyor ovqatlarga qo'shish
-• Sharbat sifatida ichish
-• Salatlarga qo'shish
-
-Mavsumi: Sentabrdan fevralgacha (shimoliy yarimsharda)
-
-Anor Gʻarbiy Osiyo aholisi tomonidan qadim zamonlardan buyon qo'llanib kelinadi.
-    """
-    await callback.message.edit_text(anor_text, reply_markup=orqaga_va_bosh)
+@dp.callback_query(F.data == 'yoz')
+async def yoz_info(callback: CallbackQuery):
+    await callback.answer("Yozda sayohat qilish uchun mamlakatlar!")
+    yoz_text = yoz
+    await callback.message.edit_text(yoz_text, reply_markup=orqaga_va_bosh)
 
 # 5-Handler - Olma haqida
 @dp.callback_query(F.data == 'olma')
@@ -197,24 +152,6 @@ async def bosh_sahifa_handler(callback: CallbackQuery):
     await callback.answer("Bosh sahifaga qaytildi!")
     await callback.message.edit_text(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!", 
     reply_markup=menyu)
-
-@dp.message(Command('reg'))
-async def reg_1(message: Message, state: FSMContext):
-    await state.set_state(Reg.name)
-    await message.answer('Ismingizni kiriting:')
-
-@dp.message(Reg.name)
-async def reg_2(message: Message, state: FSMContext):
-    await state.update_data(name=message.text)
-    await state.set_state(Reg.number)
-    await message.answer('Telefon raqamingizni kiriting: ', reply_markup=phone_button)
-
-@dp.message(Reg.number)
-async def two_three(message: Message, state: FSMContext):
-    await state.update_data(number=message.contact.phone_number)
-    data = await state.get_data()
-    await message.answer(f"Tabriklaymiz!\nSiz telegram Botimizdan ro'yxatdan o'tdingiz!\nIsm: {data["name"]}\nRaqam: {data["number"]}", reply_markup=menyu)
-    await state.clear()
 
 
 
