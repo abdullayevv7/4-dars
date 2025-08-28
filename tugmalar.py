@@ -63,6 +63,50 @@ yoz = InlineKeyboardMarkup(inline_keyboard=[
 
 ])
 
+qish = InlineKeyboardMarkup(inline_keyboard=[
+
+    [
+        InlineKeyboardButton(text="Alplar (Shveytsariya, Avstriya, Italiya, Fransiya)", callback_data='Alplar')
+    ],
+
+    [
+        InlineKeyboardButton(text="Tromsø (Norvegiya)", callback_data='Tromso')
+    ],
+
+    [
+        InlineKeyboardButton(text="Islandiya", callback_data='Islandiya')
+    ],
+
+    [
+        InlineKeyboardButton(text="Laplandiya (Finlyandiya)", callback_data='Laplandiya')
+    ],
+
+    [
+        InlineKeyboardButton(text="Seul (Janubiy Koreya)", callback_data='Seul')
+    ],
+
+    [
+        InlineKeyboardButton(text="Tokio (Yaponiya)", callback_data='Tokio')
+    ],
+
+    [
+        InlineKeyboardButton(text="New York (AQSH)", callback_data='New York')
+    ],
+
+    [
+        InlineKeyboardButton(text="Moskva (Rossiya)", callback_data='Moskva')
+    ],
+
+    [
+        InlineKeyboardButton(text="Vena (Avstriya)", callback_data='Vena')
+    ],
+
+    [
+        InlineKeyboardButton(text="Praga (Chexiya)", callback_data='Praga (Chexiya)')
+    ]
+
+])
+
 # Orqaga qaytish tugmasi (faqat katalogga)
 orqaga = InlineKeyboardMarkup(inline_keyboard=[
     [

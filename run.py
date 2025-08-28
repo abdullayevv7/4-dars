@@ -16,7 +16,7 @@ dp = Dispatcher()
 # print("Bu yangi commit uchun!")
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!\nSiz bu yerdan toz faslida va qish faslida qayerga sayohat qilishni tanlashingiz mumkin!", 
+    await message.answer(f"Assalomu alaykum hurmatli foydalanuvchi!\nTest Botimizga xush kelibsiz!\nSiz bu yerdan yoz faslida va qish faslida qayerga sayohat qilishni tanlashingiz mumkin!", 
                         reply_markup=menyu)
                         
 
@@ -24,14 +24,16 @@ async def cmd_start(message: Message):
 @dp.callback_query(F.data == 'catalog')
 async def catalog(callback: CallbackQuery):
     await callback.answer("Siz Katalog tugmasini bosdingiz!")
-    await callback.message.edit_text('Siz qaysi faslda sayohay qilmoqchisiz?:', reply_markup=inline_katalog)
+    await callback.message.edit_text('Siz qaysi faslda sayohat qilmoqchisiz?:', reply_markup=inline_katalog)
 
 
 # 4-Handler - Anor haqida
 @dp.callback_query(F.data == 'yoz')
 async def yoz_info(callback: CallbackQuery):
     await callback.answer("Yozda sayohat qilish uchun mamlakatlar!")
-    yoz_text = yoz
+    yoz_text = """
+
+"""
     await callback.message.edit_text(yoz_text, reply_markup=orqaga_va_bosh)
 
 # 5-Handler - Olma haqida
